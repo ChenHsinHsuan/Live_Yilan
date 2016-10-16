@@ -1,0 +1,13 @@
+<ion-view title="{{navigation_title}}">
+    <ion-content class="has-header">
+        <ul class="list">
+            <li class="item" 
+                ng-repeat="theSubject in subjectList" 
+                ui-sref="{{theSubject.link}}"
+                style="height:{{93/subjectList.length +'vh'}}">
+                <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;" ng-if="theSubject.icon"></i>
+                <sapn class="h2">{{theSubject.title}}</sapn>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

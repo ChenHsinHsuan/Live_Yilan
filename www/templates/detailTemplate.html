@@ -1,0 +1,17 @@
+<ion-view title="{{navigation_title}}">
+    <ion-content padding="true" class="has-header">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide ng-repeat="detail in detailList">
+            <div class="box blue">
+                <div style="min-height: 50vh;">
+                    <h1>{{detail.title}}</h1>
+                    <p>{{detail.context}}</p>
+                </div>
+                <div style="margin: 0px; line-height: 30vh; background-color: rgb(232, 235, 239); text-align: center;">
+                    <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+                </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+</ion-view>
