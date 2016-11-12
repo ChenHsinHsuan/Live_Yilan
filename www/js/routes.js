@@ -15,7 +15,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/launchPage.html',
     controller: 'launchPageCtrl'
   })
-
+  .state('mainPage', {
+    url: '/mainPage',
+    templateUrl: 'templates/mainPage.html',
+    controller: 'mainPageCtrl'
+  })
   .state('menu', {
     url: '/menu',
     templateUrl: 'templates/listTemplate.html',

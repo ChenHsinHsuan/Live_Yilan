@@ -8,11 +8,11 @@
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
 
 .config(function($ionicConfigProvider){
-   // $ionicConfigProvider.backButton.text('');
-   $ionicConfigProvider.backButton.previousTitleText(false).text('');
+   $ionicConfigProvider.backButton.text('');
+   // $ionicConfigProvider.backButton.previousTitleText(true);
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,4 +25,11 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       StatusBar.styleDefault();
     }
   });
+
+
+
+  $rootScope.backMain = function(){
+    console.log('backMain button pressed...');
+    $state.go('mainPage');
+  }
 })

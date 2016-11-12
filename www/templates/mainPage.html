@@ -1,0 +1,61 @@
+
+<ion-view  title="{{navigation_title}}" can-swipe-back="false">
+    
+
+
+    <ion-side-menus>
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item" style="height:10vh">
+                <sapn class="h2">景點分類</sapn>
+            </li>
+            <li class="item" 
+                ng-repeat="theItem in menuList" 
+                ui-sref="{{theItem.link}}"
+                style="height:{{90/menuList.length +'vh'}}">
+                <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;" ng-if="theItem.icon"></i>
+                <sapn class="h2">{{theItem.title}}</sapn>
+            </li>
+        </ul>
+      </ion-side-menu>
+
+      <ion-side-menu-content>
+            <ion-nav-bar class="bar-positive">
+                <ion-nav-buttons side="left">
+                    <!-- Toggle left side menu -->
+                    <button class="button button-icon icon ion-navicon" ng-click="toggleLeftSideMenu()"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-content class="has-header" style="background-image:url('img/sample_main.png');background-size: contain;background-repeat:no-repeat;margin:0px auto; background-color: #E3EBF4;">
+            
+
+            </ion-content>
+             <div class="tabs tabs-icon-top">
+              <a class="tab-item" ui-sref="basic">
+                <i class="icon ion-map"></i>
+                旅遊資訊
+              </a>
+              <a class="tab-item" ui-sref="feature">
+                <i class="icon ion-ios-star-outline"></i>
+                宜蘭旅遊特色
+              </a>
+              <a class="tab-item" ui-sref="story">
+                <i class="icon ion-ios-bookmarks-outline"></i>
+                在地故事
+              </a>
+              <a class="tab-item" ui-sref="#">
+                <i class="icon ion-ios-chatboxes-outline"></i>
+                反饋意見
+              </a>
+            </div>
+
+      </ion-side-menu-content>
+
+    </ion-side-menus>
+
+  
+
+
+   
+</ion-view>

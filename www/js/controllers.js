@@ -1,25 +1,46 @@
 angular.module('app.controllers', [])
   
-.controller('launchPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('launchPageCtrl',function ($scope, $stateParams, $ionicSlideBoxDelegate, $state) {
+	$scope.options = {
+	  loop: true,
+	  speed: 1000,
+	  autoplay:2000,
+	  pagination:false
+	}
 
+	$scope.nextPage = function(){
+		console.log('nextPage pressed...');
+		$state.go('mainPage');
+	}
+})
 
-}])
-   
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-	$scope.navigation_title = '主選單';
-	$scope.subjectList = [
-		{title:'宜蘭整體形象', link:'impression', icon:'1'},
-		{title:'宜蘭旅遊特色', link:'feature', icon:'2'},
-		{title:'農村社區特寫', link:'community', icon:'3'},
-		{title:'主題旅遊路線', link:'travel-line', icon:'4'}
-	];
-}])
+.controller('mainPageCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
+	
+	$scope.navigation_title = '漫遊宜蘭';
+	$scope.toggleLeftSideMenu = function(){
+		console.log('left menubar is opened...');
+		$ionicSideMenuDelegate.toggleLeft();	
+
+		$scope.menuList = [
+			{title:'體驗類', link:'#', icon:'2'},
+			{title:'住宿類', link:'#', icon:'3'},
+			{title:'餐飲類', link:'#', icon:'4'},
+			{title:'達人類', link:'#', icon:'4'}
+		];
+	}
+
+})
+
+// .controller('menuCtrl', function ($scope, $stateParams, $ionicNavBarDelegate) {
+// 	$ionicNavBarDelegate.showBackButton(false);
+// 	$scope.navigation_title = '主選單';
+// 	$scope.subjectList = [
+// 		{title:'宜蘭整體形象', link:'impression', icon:'1'},
+// 		{title:'宜蘭旅遊特色', link:'feature', icon:'2'},
+// 		{title:'農村社區特寫', link:'community', icon:'3'},
+// 		{title:'主題旅遊路線', link:'travel-line', icon:'4'}
+// 	];
+// })
    
 .controller('impressionCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -34,11 +55,8 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('basicCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-	$scope.navigation_title = '基本資訊';
+.controller('basicCtrl', function ($scope, $stateParams) {
+	$scope.navigation_title = '旅遊資訊';
 	$scope.detailList = [
 		{title:'氣候溫度', context:'內文', album:[]},
 		{title:'人口地形', context:'內文', album:[]},
@@ -48,7 +66,7 @@ function ($scope, $stateParams) {
 	$scope.slideChanged = function(index) {
 	    $scope.slideIndex = index;
 	};
-}])
+})
    
 .controller('trafficCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -66,11 +84,8 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('storyCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-	$scope.navigation_title = '代表故事';
+.controller('storyCtrl',function ($scope, $stateParams) {
+	$scope.navigation_title = '在地故事';
 	$scope.detailList = [
 		{title:'故事1', context:'內文1', album:[]},
 		{title:'故事2', context:'內文2', album:[]},
@@ -83,12 +98,9 @@ function ($scope, $stateParams) {
 	    $scope.slideIndex = index;
 	};
 
-}])
+})
    
-.controller('featureCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('featureCtrl',function ($scope, $stateParams) {
 	$scope.navigation_title = '宜蘭旅遊特色';
 	$scope.detailList = [
 		{title:'社山親水', context:'內文1', album:[]},
@@ -102,7 +114,7 @@ function ($scope, $stateParams) {
 	    $scope.slideIndex = index;
 	};
 
-}])
+})
    
 .controller('communityCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function

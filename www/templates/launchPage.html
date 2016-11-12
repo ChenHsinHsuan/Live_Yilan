@@ -1,9 +1,25 @@
-<ion-view title="launchPage" hide-nav-bar="true" id="page1">
-    
-   <div style="margin: 0px; line-height: 100vh; background-color: rgb(232, 235, 239); text-align: center;">
-	    <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-	</div>
-   <button ui-sref="menu" class="button button-block button-stable align-bottom">
+<ion-view class="launchpage" hide-nav-bar="true" scroll="false">
+   	
+   	<ion-slides options="options">
+	    <ion-slide-page>
+	    	<div class="box blue">
+	    		<h1>畫面一</h1>
+	    	</div>
+	    </ion-slide-page>
+	    <ion-slide-page>
+	    	<div class="box yellow">
+	    		<h1>畫面二</h1>
+	    	</div>
+	    </ion-slide-page>
+	    <ion-slide-page>
+	    	<div class="box pink">
+	    		<h1>畫面三</h1>
+	    	</div>
+	    </ion-slide-page>
+  	</ion-slides>
+   
+  	<button class="button button-clear button-dark button-block button-large" ng-click="nextPage()">
 	  進入
-	</button>
+	</button>	
+
 </ion-view>
