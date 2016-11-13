@@ -17,19 +17,36 @@ angular.module('app.controllers', [])
 .controller('mainPageCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
 	
 	$scope.navigation_title = '漫遊宜蘭';
-	$scope.toggleLeftSideMenu = function(){
-		console.log('left menubar is opened...');
-		$ionicSideMenuDelegate.toggleLeft();	
-
-		$scope.menuList = [
-			{title:'體驗類', link:'#', icon:'2'},
-			{title:'住宿類', link:'#', icon:'3'},
-			{title:'餐飲類', link:'#', icon:'4'},
-			{title:'達人類', link:'#', icon:'4'}
-		];
-	}
+	
 
 })
+
+.controller('sceneCtrl', function ($scope, $stateParams, $ionicNavBarDelegate) {
+	
+	console.log('type:'+$stateParams.typeid);
+
+
+	if($stateParams.typeid === 'experience'){
+		$scope.type_title='體驗類';
+	}else if($stateParams.typeid === 'house'){
+		$scope.type_title='住宿類';
+	}else if($stateParams.typeid === 'eat'){
+		$scope.type_title='餐飲類';
+	}else if($stateParams.typeid === 'person'){
+		$scope.type_title='達人類';
+	}
+
+	$scope.itemList = [
+		{image:'', description:'描述內容1'},
+		{image:'', description:'描述內容2'},
+		{image:'', description:'描述內容3'},
+		{image:'', description:'描述內容4'}
+	];
+	
+
+
+})
+
 
 // .controller('menuCtrl', function ($scope, $stateParams, $ionicNavBarDelegate) {
 // 	$ionicNavBarDelegate.showBackButton(false);

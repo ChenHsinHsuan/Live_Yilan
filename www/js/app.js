@@ -12,7 +12,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
    // $ionicConfigProvider.backButton.previousTitleText(true);
 })
 
-.run(function($ionicPlatform, $rootScope, $state) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicSideMenuDelegate) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -32,4 +32,18 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     console.log('backMain button pressed...');
     $state.go('mainPage');
   }
+
+
+  $rootScope.toggleLeftSideMenu = function(){
+    console.log('left menubar is opened...');
+    $ionicSideMenuDelegate.toggleLeft();      
+  }
+
+  $rootScope.menuList = [
+      {title:'體驗類', link:'experience', icon:'2'},
+      {title:'住宿類', link:'house', icon:'3'},
+      {title:'餐飲類', link:'eat', icon:'4'},
+      {title:'達人類', link:'person', icon:'4'}
+    ];
+
 })

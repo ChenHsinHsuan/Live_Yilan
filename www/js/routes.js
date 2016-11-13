@@ -20,6 +20,17 @@ angular.module('app.routes', [])
     templateUrl: 'templates/mainPage.html',
     controller: 'mainPageCtrl'
   })
+
+
+
+  .state('scene', {
+    url: '/scene/:typeid',
+    templateUrl: 'templates/sceneTemplate.html',
+    controller: 'sceneCtrl'
+  })
+
+
+
   .state('menu', {
     url: '/menu',
     templateUrl: 'templates/listTemplate.html',

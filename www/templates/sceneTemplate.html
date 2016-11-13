@@ -1,0 +1,50 @@
+<ion-view title="宜蘭整體形象">
+
+
+
+
+
+     <ion-side-menus>
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item" style="height:10vh">
+                <sapn class="h2">景點分類</sapn>
+            </li>
+            <li class="item" 
+                ng-repeat="theItem in menuList" 
+                ui-sref="scene({'typeid':'{{theItem.link}}'})"
+                style="height:{{90/menuList.length +'vh'}}">
+                <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;" ng-if="theItem.icon"></i>
+                <sapn class="h2">{{theItem.title}}</sapn>
+            </li>
+        </ul>
+      </ion-side-menu>
+
+      <ion-side-menu-content>
+            <ion-nav-bar class="bar-positive">
+                <ion-nav-buttons side="left">
+                    <!-- Toggle left side menu -->
+                    <button class="button button-icon icon ion-navicon" ng-click="toggleLeftSideMenu()"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-content padding="true" class="has-header">
+                <h2>{{type_title}}</h2>
+                <div class="list card" ng-repeat="theItem in itemList">
+
+                  <div class="item item-image">
+                     <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;line-height: 30vh;" ></i>
+                  </div>
+                  <div class="item item-icon-left">
+                    {{theItem.description}}
+                  </div>
+
+                </div>
+            </ion-content>
+      </ion-side-menu-content>
+
+    </ion-side-menus>
+
+
+
+</ion-view>
