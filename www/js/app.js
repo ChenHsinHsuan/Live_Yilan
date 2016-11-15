@@ -36,14 +36,21 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
   $rootScope.toggleLeftSideMenu = function(){
     console.log('left menubar is opened...');
-    $ionicSideMenuDelegate.toggleLeft();      
+    $ionicSideMenuDelegate.toggleLeft(true);      
   }
 
-  $rootScope.menuList = [
+  $rootScope.sideMenuList = [
+      {title:'主畫面', link:'mainPage', icon:'2'},
       {title:'體驗類', link:'experience', icon:'2'},
-      {title:'住宿類', link:'house', icon:'3'},
-      {title:'餐飲類', link:'eat', icon:'4'},
-      {title:'達人類', link:'person', icon:'4'}
+      {title:'住宿類', link:'living', icon:'3'},
+      {title:'餐飲類', link:'restaurant', icon:'4'},
+      {title:'達人類', link:'expert', icon:'4'}
     ];
+
+  $rootScope.doSideBarMenuItemClick = function(){
+      $ionicSideMenuDelegate.toggleLeft(false);      
+  }
+
+
 
 })

@@ -23,36 +23,37 @@ angular.module('app.routes', [])
 
 
 
-  .state('scene', {
-    url: '/scene/:typeid',
+  .state('experience', {
+    url: '/experience',
     templateUrl: 'templates/sceneTemplate.html',
-    controller: 'sceneCtrl'
+    controller: 'experienceCtrl'
   })
 
-
-
-  .state('menu', {
-    url: '/menu',
-    templateUrl: 'templates/listTemplate.html',
-    controller: 'menuCtrl'
+  .state('living', {
+    url: '/living',
+    templateUrl: 'templates/sceneTemplate.html',
+    controller: 'livingCtrl'
   })
 
-  .state('impression', {
-    url: '/impression',
-    templateUrl: 'templates/listTemplate.html',
-    controller: 'impressionCtrl'
+  .state('restaurant', {
+    url: '/restaurant',
+    templateUrl: 'templates/sceneTemplate.html',
+    controller: 'restaurantCtrl'
   })
 
+  .state('expert', {
+    url: '/expert',
+    templateUrl: 'templates/sceneTemplate.html',
+    controller: 'expertCtrl'
+  })
+
+  
+  
+  
   .state('basic', {
     url: '/basic',
     templateUrl: 'templates/detailTemplate.html',
     controller: 'basicCtrl'
-  })
-
-  .state('traffic', {
-    url: '/traffic',
-    templateUrl: 'templates/detailTemplate.html',
-    controller: 'trafficCtrl'
   })
 
   .state('story', {
@@ -67,35 +68,65 @@ angular.module('app.routes', [])
     controller: 'featureCtrl'
   })
 
-  .state('community', {
-    url: '/community',
-    templateUrl: 'templates/community.html',
-    controller: 'communityCtrl'
+  .state('feedback', {
+    url: '/feedback',
+    templateUrl: 'templates/feedbackTemplate.html',
+    controller: 'feedbackCtrl'
   })
 
-  .state('travel-wiki', {
-    url: '/travel-wiki',
-    templateUrl: 'templates/detailTemplate.html',
-    controller: 'travelwikiCtrl'
-  })
 
-  .state('community-detail', {
-    url: '/community-detail',
-    templateUrl: 'templates/detailTemplate.html',
-    controller: 'communitydetailCtrl'
-  })
 
-  .state('travel-line', {
-    url: '/travel-line',
-    templateUrl: 'templates/listTemplate.html',
-    controller: 'travellineCtrl'
-  })
+  // .state('menu', {
+  //   url: '/menu',
+  //   templateUrl: 'templates/listTemplate.html',
+  //   controller: 'menuCtrl'
+  // })
 
-  .state('travel-line-detail', {
-    url: '/travel-line-detail',
-    templateUrl: 'templates/detailTemplate.html',
-    controller: 'travelLineDetailCtrl'
-  })
+  // .state('impression', {
+  //   url: '/impression',
+  //   templateUrl: 'templates/listTemplate.html',
+  //   controller: 'impressionCtrl'
+  // })
+
+  
+
+  // .state('traffic', {
+  //   url: '/traffic',
+  //   templateUrl: 'templates/detailTemplate.html',
+  //   controller: 'trafficCtrl'
+  // })
+
+  
+
+  // .state('community', {
+  //   url: '/community',
+  //   templateUrl: 'templates/community.html',
+  //   controller: 'communityCtrl'
+  // })
+
+  // .state('travel-wiki', {
+  //   url: '/travel-wiki',
+  //   templateUrl: 'templates/detailTemplate.html',
+  //   controller: 'travelwikiCtrl'
+  // })
+
+  // .state('community-detail', {
+  //   url: '/community-detail',
+  //   templateUrl: 'templates/detailTemplate.html',
+  //   controller: 'communitydetailCtrl'
+  // })
+
+  // .state('travel-line', {
+  //   url: '/travel-line',
+  //   templateUrl: 'templates/listTemplate.html',
+  //   controller: 'travellineCtrl'
+  // })
+
+  // .state('travel-line-detail', {
+  //   url: '/travel-line-detail',
+  //   templateUrl: 'templates/detailTemplate.html',
+  //   controller: 'travelLineDetailCtrl'
+  // })
 
 $urlRouterProvider.otherwise('/launchPage')
 

@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
 
-    
-    
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  -->
 
 
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-    <style type="text/css">
-      .platform-ios .manual-ios-statusbar-padding{
-        padding-top:20px;
-      }
-      .manual-remove-top-padding{
-        padding-top:0px; 
-      }
-      .manual-remove-top-padding .scroll{
-        padding-top:0px !important;
-      }
-      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
-        margin-left:-10px;
-        margin-right:-10px;
-      }
-      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
-        border-radius:0px;
-        border-left:0px;
-        border-right: 0px;
-      }
-    </style>
 
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/routes.js"></script>
-    
-     
-    <script src="js/directives.js"></script>
-     
-    <script src="js/services.js"></script>
-    
+
+  <style type="text/css">
+    .platform-ios .manual-ios-statusbar-padding{
+      padding-top:20px;
+    }
+    .manual-remove-top-padding{
+      padding-top:0px; 
+    }
+    .manual-remove-top-padding .scroll{
+      padding-top:0px !important;
+    }
+    ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+      margin-left:-10px;
+      margin-right:-10px;
+    }
+    ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+      border-radius:0px;
+      border-left:0px;
+      border-right: 0px;
+    }
+  </style>
+
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/routes.js"></script>
+
+
+  <script src="js/directives.js"></script>
+
+  <script src="js/services.js"></script>
+
 
     <!-- Only required for Tab projects w/ pages in multiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
-    -->
+  -->
 
-  </head>
-  <body ng-app="app" animation="slide-left-right-ios7">
-  <div>
-      <ion-nav-view>
-      </ion-nav-view>   
-  </div>
-  </body>
+</head>
+<body ng-app="app" animation="slide-left-right-ios7">
+
+ <ion-side-menus>
+  <ion-side-menu side="left">
+    <ul class="list">
+      <li class="item" style="height:10vh">
+        <sapn class="h2">景點分類</sapn>
+      </li>
+      <a class="item" ng-repeat="theItem in sideMenuList" ui-sref="{{theItem.link}}" ng-click="doSideBarMenuItemClick()" style="height:{{90/sideMenuList.length +'vh'}}">
+      <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;" ng-if="theItem.icon"></i>
+      <sapn class="h2">{{theItem.title}}</sapn>
+    </a>
+  </ul>
+</ion-side-menu>
+
+<ion-side-menu-content>
+
+  <ion-nav-view>
+  </ion-nav-view>   
+
+</ion-side-menu-content>
+
+</ion-side-menus>
+
+
+</body>
 </html>

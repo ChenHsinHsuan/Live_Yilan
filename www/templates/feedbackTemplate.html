@@ -1,0 +1,33 @@
+<ion-view title="{{navigation_title}}" can-swipe-back="false">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button class="button-clear" ng-click="backMain()">
+            <i class="icon ion-chevron-left"></i>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content padding="true" class="has-header">
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              回饋類型
+            </div>
+            <select>
+              <option>申請成為廠商</option>
+              <option selected>改善建議</option>
+              <option>其他</option>
+            </select>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">First Name</span>
+            <input type="text" placeholder="John">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Last Name</span>
+            <input type="text" placeholder="Suhr">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="john@suhr.com">
+          </label>
+        </div>
+    </ion-content>
+</ion-view>
