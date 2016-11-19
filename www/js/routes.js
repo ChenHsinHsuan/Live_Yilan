@@ -76,6 +76,13 @@ angular.module('app.routes', [])
 
 
 
+  .state('subject', {
+    url: '/subject',
+    templateUrl: 'templates/detailTemplate.html',
+    controller: 'subjectCtrl'
+  })
+
+
   // .state('menu', {
   //   url: '/menu',
   //   templateUrl: 'templates/listTemplate.html',

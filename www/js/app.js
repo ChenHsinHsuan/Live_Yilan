@@ -40,15 +40,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   }
 
   $rootScope.sideMenuList = [
-      {title:'主畫面', link:'mainPage', icon:'2'},
       {title:'體驗類', link:'experience', icon:'2'},
       {title:'住宿類', link:'living', icon:'3'},
       {title:'餐飲類', link:'restaurant', icon:'4'},
       {title:'達人類', link:'expert', icon:'4'}
     ];
 
-  $rootScope.doSideBarMenuItemClick = function(){
-      $ionicSideMenuDelegate.toggleLeft(false);      
+  $rootScope.doSideBarMenuItemClick = function(url){
+    $state.go(url);
+    $ionicSideMenuDelegate.toggleLeft(false);      
   }
 
 

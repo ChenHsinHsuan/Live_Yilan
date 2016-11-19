@@ -64,9 +64,9 @@
   <ion-side-menu side="left">
     <ul class="list">
       <li class="item" style="height:10vh">
-        <sapn class="h2">景點分類</sapn>
+        <button class="button button-icon icon ion-ios-home-outline" ng-click="doSideBarMenuItemClick('mainPage')"></button>
       </li>
-      <a class="item" ng-repeat="theItem in sideMenuList" ui-sref="{{theItem.link}}" ng-click="doSideBarMenuItemClick()" style="height:{{90/sideMenuList.length +'vh'}}">
+      <a class="item" ng-repeat="theItem in sideMenuList" ng-click="doSideBarMenuItemClick('{{theItem.link}}')" style="height:{{90/sideMenuList.length +'vh'}}">
       <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;" ng-if="theItem.icon"></i>
       <sapn class="h2">{{theItem.title}}</sapn>
     </a>
@@ -77,6 +77,7 @@
 
   <ion-nav-view>
   </ion-nav-view>   
+
 
 </ion-side-menu-content>
 

@@ -15,22 +15,13 @@ angular.module('app.controllers', [])
 })
 
 .controller('mainPageCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
-	
 	$scope.navigation_title = '漫遊宜蘭';
-	
-	if($ionicSideMenuDelegate.isOpen()) {
-        $ionicSideMenuDelegate.toggleLeft(false);
-    }
 
 })
 
 
 .controller('experienceCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
 	$scope.navigation_title = '景點-體驗類';
-
-	if($ionicSideMenuDelegate.isOpen()) {
-        $ionicSideMenuDelegate.toggleLeft(false);
-    }
 	$scope.itemList = [
 		{image:'', description:'描述內容1'},
 		{image:'', description:'描述內容2'},
@@ -42,9 +33,6 @@ angular.module('app.controllers', [])
 
 .controller('livingCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
 	$scope.navigation_title = '景點-住宿類';
-	if($ionicSideMenuDelegate.isOpen()) {
-        $ionicSideMenuDelegate.toggleLeft(false);
-    }
 	$scope.itemList = [
 		{image:'', description:'描述內容1'},
 
@@ -54,9 +42,6 @@ angular.module('app.controllers', [])
 
 .controller('restaurantCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
 	$scope.navigation_title = '景點-餐廳類';
-	if($ionicSideMenuDelegate.isOpen()) {
-        $ionicSideMenuDelegate.toggleLeft(false);
-    }
 	$scope.itemList = [
 		{image:'', description:'描述內容1'},
 		{image:'', description:'描述內容2'}
@@ -120,21 +105,6 @@ angular.module('app.controllers', [])
 	};
 })
    
-// .controller('trafficCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// // You can include any angular dependencies as parameters for this function
-// // TIP: Access Route Parameters for your page via $stateParams.parameterName
-// function ($scope, $stateParams) {
-// 	$scope.navigation_title = '交通方式';
-// 	$scope.detailList = [
-// 		{title:'大眾運輸', context:'內文', album:[]},
-// 		{title:'其他方式', context:'內文', album:[]}
-// 	];
-
-// 	$scope.slideChanged = function(index) {
-// 	    $scope.slideIndex = index;
-// 	};
-
-// }])
    
 .controller('storyCtrl',function ($scope, $stateParams) {
 	$scope.navigation_title = '在地故事';
@@ -167,7 +137,43 @@ angular.module('app.controllers', [])
 	};
 
 })
-   
+
+.controller('feedbackCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
+	$scope.navigation_title = '反饋意見';
+	
+})
+
+
+.controller('subjectCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
+	$scope.navigation_title = '主題';
+	$scope.detailList = [
+		{title:'單一景點簡介', context:'', album:[]},
+		{title:'商品/服務資訊', context:'', album:[]},
+		{title:'交通資訊', context:'', album:[]}
+	];
+
+	$scope.slideChanged = function(index) {
+	    $scope.slideIndex = index;
+	};
+})
+
+
+// .controller('trafficCtrl', ['$scope', '$stateParams', '$ionicSlideBoxDelegate', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// // You can include any angular dependencies as parameters for this function
+// // TIP: Access Route Parameters for your page via $stateParams.parameterName
+// function ($scope, $stateParams) {
+// 	$scope.navigation_title = '交通方式';
+// 	$scope.detailList = [
+// 		{title:'大眾運輸', context:'內文', album:[]},
+// 		{title:'其他方式', context:'內文', album:[]}
+// 	];
+
+// 	$scope.slideChanged = function(index) {
+// 	    $scope.slideIndex = index;
+// 	};
+
+// }])
+
 // .controller('communityCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // // You can include any angular dependencies as parameters for this function
 // // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -252,8 +258,4 @@ angular.module('app.controllers', [])
 // }])
  
 
- .controller('feedbackCtrl', function ($scope, $stateParams, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
-	$scope.navigation_title = '反饋意見';
-	
-	
-})
+ 
