@@ -7,12 +7,14 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
 
-.config(function($ionicConfigProvider){
-   $ionicConfigProvider.backButton.text('');
-   // $ionicConfigProvider.backButton.previousTitleText(true);
+.config(function($ionicConfigProvider, $sceDelegateProvider){
+  
+
+  $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
+
 })
 
-.run(function($ionicPlatform, $rootScope, $state, $ionicSideMenuDelegate) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,32 +27,27 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       StatusBar.styleDefault();
     }
   });
-
-
-
-  $rootScope.backMain = function(){
-    console.log('backMain button pressed...');
-    $state.go('mainPage');
-  }
-
-
-  $rootScope.toggleLeftSideMenu = function(){
-    console.log('left menubar is opened...');
-    $ionicSideMenuDelegate.toggleLeft(true);      
-  }
-
-  $rootScope.sideMenuList = [
-      {title:'體驗類', link:'experience', icon:'2'},
-      {title:'住宿類', link:'living', icon:'3'},
-      {title:'餐飲類', link:'restaurant', icon:'4'},
-      {title:'達人類', link:'expert', icon:'4'}
-    ];
-
-  $rootScope.doSideBarMenuItemClick = function(url){
-    $state.go(url);
-    $ionicSideMenuDelegate.toggleLeft(false);      
-  }
-
-
-
 })
+
+.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
+    return {
+        restrict: "A",  
+        controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+
+            function stopDrag(){
+              $ionicSideMenuDelegate.canDragContent(false);
+            }
+
+            function allowDrag(){
+              $ionicSideMenuDelegate.canDragContent(true);
+            }
+
+            $rootScope.$on('$ionicSlides.slideChangeEnd', allowDrag);
+            $element.on('touchstart', stopDrag);
+            $element.on('touchend', allowDrag);
+            $element.on('mousedown', stopDrag);
+            $element.on('mouseup', allowDrag);
+
+        }]
+    };
+}])
