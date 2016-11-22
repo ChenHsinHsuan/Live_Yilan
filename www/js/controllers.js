@@ -1,74 +1,61 @@
 angular.module('app.controllers', [])
-  
-.controller('subjectCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('infoCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('featureCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-      
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('launchCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('storyCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('sceneCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('feedbackCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('scene_detailCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
  
+//launch 頁面   
+.controller('launchCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate) {
+	$scope.options = {
+	  loop: true,
+	  speed: 1000,
+	  autoplay:2000,
+	  pagination:false
+	};
+
+})
+
+
+//主題路線  
+.controller('subjectCtrl',function ($scope, $stateParams) {
+
+
+})
+   
+//旅遊資訊   
+.controller('infoCtrl', function ($scope, $stateParams) {
+	
+
+})
+   
+//宜蘭特色   
+.controller('featureCtrl', function ($scope, $stateParams) {
+
+
+})
+      
+//在地故事
+.controller('storyCtrl', function ($scope, $stateParams) {
+
+
+})
+ 
+//景點介紹   
+.controller('sceneCtrl', function ($scope, $stateParams) {
+
+
+})
+ 
+//意見反饋   
+.controller('feedbackCtrl',function ($scope, $stateParams) {
+	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    	viewData.enableBack = true;
+	});
+})
+ 
+//景點內容   
+.controller('scene_detailCtrl',function ($scope, $stateParams) {
+
+
+})
+ 
+
+//選單      
+// .controller('menuCtrl', function ($scope, $stateParams) {
+// }) 

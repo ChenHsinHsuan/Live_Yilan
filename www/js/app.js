@@ -8,10 +8,10 @@
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
-  
-
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
-
+  
+  $ionicConfigProvider.tabs.position('bottom'); // other values: top
+  $ionicConfigProvider.views.swipeBackEnabled(false);
 })
 
 .run(function($ionicPlatform) {
@@ -29,25 +29,25 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   });
 })
 
-.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
-    return {
-        restrict: "A",  
-        controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+// .directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
+//     return {
+//         restrict: "A",  
+//         controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
 
-            function stopDrag(){
-              $ionicSideMenuDelegate.canDragContent(false);
-            }
+//             function stopDrag(){
+//               $ionicSideMenuDelegate.canDragContent(false);
+//             }
 
-            function allowDrag(){
-              $ionicSideMenuDelegate.canDragContent(true);
-            }
+//             function allowDrag(){
+//               $ionicSideMenuDelegate.canDragContent(true);
+//             }
 
-            $rootScope.$on('$ionicSlides.slideChangeEnd', allowDrag);
-            $element.on('touchstart', stopDrag);
-            $element.on('touchend', allowDrag);
-            $element.on('mousedown', stopDrag);
-            $element.on('mouseup', allowDrag);
+//             $rootScope.$on('$ionicSlides.slideChangeEnd', allowDrag);
+//             $element.on('touchstart', stopDrag);
+//             $element.on('touchend', allowDrag);
+//             $element.on('mousedown', stopDrag);
+//             $element.on('mouseup', allowDrag);
 
-        }]
-    };
-}])
+//         }]
+//     };
+// }])

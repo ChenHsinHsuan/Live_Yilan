@@ -10,7 +10,7 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController.subject', {
+  .state('tabsController.subject', {
     url: '/tab1',
     views: {
       'tab1': {
@@ -41,13 +41,13 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController', {
-    url: '/page1',
+    url: '/Ctab',
     templateUrl: 'templates/tabsController.html',
     abstract:true
   })
 
   .state('launch', {
-    url: '/page5',
+    url: '/launch',
     templateUrl: 'templates/launch.html',
     controller: 'launchCtrl'
   })
@@ -84,7 +84,7 @@ angular.module('app.routes', [])
     controller: 'scene_detailCtrl'
   })
 
-$urlRouterProvider.otherwise('/page5')
+$urlRouterProvider.otherwise('/launch')
 
   
 

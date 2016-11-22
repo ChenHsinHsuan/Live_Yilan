@@ -1,26 +1,38 @@
 /* Empty. Add your own CSS if you like */
-.launchpage div.box{
-	text-align: center;
-	vertical-align: middle;
-	height: 100vh;
-	padding-top:40vh;
-}
 
-.launchpage .blue{
+
+.blue{
 	background-color: #2196F3;
 }
 
-.launchpage .yellow{
+.yellow{
 	background-color: #FFEE58;
 }
 
-.launchpage .pink{
+.pink{
 	background-color: #E91E63;
 }
 
-.launchpage button{
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+
+#launch button{
 	position: absolute;
 	bottom:1.5em;
 	z-index: 10;
 	color: #FFFFFF;
+}
+
+
+
+
+#subject .card .image {
+	margin: 0px; 
+	line-height: 20vh; 
+	background-color: rgb(232, 235, 239); 
+	text-align: center;
+	width:50vw;
 }
