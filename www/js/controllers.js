@@ -52,6 +52,13 @@ angular.module('app.controllers', [])
 //景點內容   
 .controller('scene_detailCtrl',function ($scope, $stateParams) {
 
+	$scope.options = {
+	  loop: true
+	};
+
+	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    	viewData.enableBack = true;
+	});
 
 })
  
