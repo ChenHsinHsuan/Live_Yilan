@@ -26,13 +26,16 @@
 	color: #FFFFFF;
 }
 
+.circle {
+	border-radius: 50%;
+}
 
 
-
-#subject .card .image {
-	margin: 0px; 
-	line-height: 20vh; 
+#subject  .card .image , #scene .card .image {
+	margin: 0; 
+	line-height: 120px; 
 	background-color: rgb(232, 235, 239); 
 	text-align: center;
-	width:50vw;
+	width:120px;
+
 }
