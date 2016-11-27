@@ -4,7 +4,7 @@ var database = firebase.database();
 angular.module('app.controllers', [])
  
 //launch 頁面   
-.controller('launchCtrl', function ($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate) {
+.controller('launchCtrl', function ($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, $ionicLoading) {
 	
 	$scope.options = {
 	  loop: true,
@@ -13,9 +13,33 @@ angular.module('app.controllers', [])
 	  pagination:false
 	};
 
-	$scope.repeatDone = function() {
-	  $ionicSlideBoxDelegate.update();
-	};
+
+	//1.撈取資料庫看有哪些圖檔
+	  var database = firebase.database(), 
+	    storage = firebase.storage(),
+	    launchType = 'morning',
+	    pathReference = '';
+	  
+	 	$rootScope.pics = [];
+		$ionicLoading.show({
+	      template: '連線中...',
+	      duration: 3000
+	    }).then(function(){
+			  database.ref('/首頁/'+launchType)
+			  .once('value')
+			  .then(function(snapshot){
+			    console.log('snapshot:'+snapshot.val());
+			    snapshot.forEach(function(data){
+			      pathReference = storage.ref('/launch/'+data.val());
+			      pathReference.getDownloadURL().then(function(url) {
+			          $scope.pics.push(url);
+			      }).catch(function(error) {
+			          // If anything goes wrong while getting the download URL, log the error
+			          console.error('error:'+error);
+			      });
+			    });
+			  });
+		});
 })
 
 
@@ -37,13 +61,6 @@ angular.module('app.controllers', [])
 			$ionicLoading.hide();
 		});
     });
-
-
-    $rootScope.doDetail = function(sceneid){
-		console.log('scene id:'+sceneid+' pressed...');
-		 $state.go('scene_detail', {sceneid:sceneid});
-	};
-
 })
    
 //旅遊資訊   

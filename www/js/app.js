@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   $ionicConfigProvider.views.swipeBackEnabled(false);
 })
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $ionicPopup, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -29,37 +29,22 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   });
 
 
+  $rootScope.doDetail = function(sceneid){
+    console.log('scene id:'+sceneid+' pressed...');
+     $state.go('scene_detail', {sceneid:sceneid});
+  };
 
-  //1.撈取資料庫看有哪些圖檔
-  var database = firebase.database(), 
-    storage = firebase.storage(),
-    launchType = 'morning';
-  
-  $rootScope.pics = [];
-
-  database.ref('/launch/'+launchType)
-  .once('value')
-  .then(function(snapshot){
-    // console.log('snapshot:'+snapshot.val());
-    snapshot.forEach(function(data){
-      var pathReference = storage.ref('/launch/'+data.val());
-
-      pathReference.getDownloadURL().then(function(url) {
-        // console.log('pathReference:'+pathReference);
-          // console.log('url:'+url);
-          $rootScope.pics.push(url);
-          // $ionicSlideBoxDelegate.update();
-      }).catch(function(error) {
-          // If anything goes wrong while getting the download URL, log the error
-          console.error('error:'+error);
-      });
+  $rootScope.doFeetback = function(){
+    $ionicPopup.alert({
+         title: '施工中',
+         template: '等待問卷填寫完成...'
     });
-  });
-
-
-
+  }
 
 })
+
+
+  
 
 // .directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
 //     return {
