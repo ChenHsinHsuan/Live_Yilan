@@ -2,9 +2,12 @@
   <ion-content padding="false">
 
     <ion-slides options="options" slider="" style="width:calc(100% + 20px);height:100vh;margin-left:-10px;">
-      <ion-slide-page class="blue"></ion-slide-page>
-      <ion-slide-page class="yellow"></ion-slide-page>
-      <ion-slide-page class="pink"></ion-slide-page>
+    	<ion-slide-page class="blue"></ion-slide-page>
+    	<ion-slide-page class="pink"></ion-slide-page>
+    	<ion-slide-page class="yellow"></ion-slide-page>
+      <!-- <ion-slide-page ng-repeat="url in pics" repeat-done="repeatDone()">
+      	<img ng-src="{{url}}" style="width:calc(100% + 20px);height:100vh;margin-left:-10px;">
+      </ion-slide-page> -->
     </ion-slides>
     <button ui-sref="tabsController.subject" class="button button-clear button-positive button-block">進入</button>
   </ion-content>

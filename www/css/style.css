@@ -16,6 +16,7 @@
 .wide-as-needed {
   overflow: scroll;
   white-space: nowrap;
+  line-height:220px;
 }
 
 
@@ -36,6 +37,6 @@
 	line-height: 120px; 
 	background-color: rgb(232, 235, 239); 
 	text-align: center;
-	width:120px;
+	width:100%;
 
 }

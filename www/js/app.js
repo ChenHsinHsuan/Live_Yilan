@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   $ionicConfigProvider.views.swipeBackEnabled(false);
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -27,6 +27,38 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       StatusBar.styleDefault();
     }
   });
+
+
+
+  //1.撈取資料庫看有哪些圖檔
+  var database = firebase.database(), 
+    storage = firebase.storage(),
+    launchType = 'morning';
+  
+  $rootScope.pics = [];
+
+  database.ref('/launch/'+launchType)
+  .once('value')
+  .then(function(snapshot){
+    // console.log('snapshot:'+snapshot.val());
+    snapshot.forEach(function(data){
+      var pathReference = storage.ref('/launch/'+data.val());
+
+      pathReference.getDownloadURL().then(function(url) {
+        // console.log('pathReference:'+pathReference);
+          // console.log('url:'+url);
+          $rootScope.pics.push(url);
+          // $ionicSlideBoxDelegate.update();
+      }).catch(function(error) {
+          // If anything goes wrong while getting the download URL, log the error
+          console.error('error:'+error);
+      });
+    });
+  });
+
+
+
+
 })
 
 // .directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {

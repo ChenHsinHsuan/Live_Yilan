@@ -79,7 +79,7 @@ angular.module('app.routes', [])
   })
 
   .state('scene_detail', {
-    url: '/subject_detail',
+    url: '/subject_detail/:sceneid',
     templateUrl: 'templates/scene_detail.html',
     controller: 'scene_detailCtrl'
   })

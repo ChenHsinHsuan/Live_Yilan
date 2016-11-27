@@ -1,136 +1,21 @@
 <ion-view title="主題路線" id="subject">
-  <ion-content padding="true" class="has-header">
-    <h3>茶路線</h3>
-    <ion-scroll direction="x" class="wide-as-needed" style="line-height:40vh;">
-        <a class="button button-clear" ui-sref="scene_detail">
-           <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+  <ion-content padding="true" class="has-header" scrollbar-y="false">
+    <div ng-repeat="item in itemList">
+      <div class="h3" style="margin: 16px;">{{item.subject}}</div>
+      <ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed">
+        <a class="button button-clear"  
+            ng-repeat="content in item.list" 
+            ng-click="doDetail('{{content.id}}')"
+            style="min-width: 144px; max-width:144px;">
+            <div class="list">
+              <div class="image icon ion-image" style="min-height:120px; margin:5px; box-shadow:0 1px 3px rgba(0, 0, 0, 0.3);">
+                
+              </div>
+              <small class="item" style="border-width:0px; line-height: 1.5em; padding:0px;" ng-bind-html="content.title">
+              </small>
             </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
         </a>
-       <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-    </ion-scroll>
-   
-
-    <h3>米路線</h3>
-    <ion-scroll direction="x" class="wide-as-needed" style="line-height:40vh;">
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-       <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-    </ion-scroll>
-
-    <h3>原住民</h3>
-    <ion-scroll direction="x" class="wide-as-needed" style="line-height:40vh;">
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-       <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-        <a class="button button-clear" ui-sref="scene_detail">
-          <div class="list card">
-            <div class="image">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-            </div>
-            <div class="item item-body">
-              <strong>title</strong>
-            </div>
-          </div>
-        </a>
-    </ion-scroll>
+      </ion-scroll>
+    </div>
   </ion-content>
 </ion-view>
