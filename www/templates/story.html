@@ -3,6 +3,7 @@
       <ion-slide-page ng-repeat="item in itemList">
       	<ion-content style="padding: 14px;">
 			<div ng-bind-html="item.title"></div>
+			<img ng-src="img/story/{{item.photo}}">
 			<div ng-bind-html="item.content"></div>
 		</ion-content>
       </ion-slide-page>

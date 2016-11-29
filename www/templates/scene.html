@@ -8,10 +8,10 @@
             ng-click="doDetail('{{content.id}}')"
             style="min-width: 144px; max-width:144px;">
             <div class="list">
-              <div class="image icon ion-image" style="min-height:120px; margin:5px; box-shadow:0 1px 3px rgba(0, 0, 0, 0.3);">
-                
+              <div class="item item-image">
+                <img ng-src="img/scene/{{content.photo}}" style="min-width: 144px; max-width:144px;"/>
               </div>
-              <small class="item" style="border-width:0px; line-height: 1.5em; padding:0px;" ng-bind-html="content.title">
+               <small class="item" style="border-width:0px; line-height: 1.5em; padding:0px; margin-top: 10px;" ng-bind-html="content.title">
               </small>
             </div>
         </a>

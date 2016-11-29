@@ -6,6 +6,7 @@
 			<div ng-bind-html="item.title_en"></div>
 			<div ng-bind-html="item.content"></div>
 			<div ng-bind-html="item.content_en"></div>
+			<img ng-repeat="photo in item.photo" ng-src="img/feature/{{photo}}">
 		</ion-content>
       </ion-slide-page>
     </ion-slides>

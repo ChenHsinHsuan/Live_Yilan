@@ -4,6 +4,7 @@
       	<ion-content style="padding: 14px;">
 			<div ng-bind-html="item.title"></div>
 			<div ng-bind-html="item.content"></div>
+			<img ng-repeat="photo in item.photo" ng-src="img/scene/{{photo}}">
 		</ion-content>
       </ion-slide-page>
     </ion-slides>
