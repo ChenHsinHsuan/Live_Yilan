@@ -5,7 +5,7 @@ var database = firebase.database(),
 angular.module('app.controllers', [])
  
 //launch 頁面   
-.controller('launchCtrl', function ($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, $ionicLoading) {
+.controller('launchCtrl', function ($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, $ionicLoading, $state) {
 	
 	$scope.options = {
 	  loop: true,
@@ -15,35 +15,45 @@ angular.module('app.controllers', [])
 	};
 
 
-	//1.撈取資料庫看有哪些圖檔
 	var launchType = 'morning',
-	    pathReference = '';
+	    pathReference = '',
+	    currentdate = new Date(),
+		time = ''+currentdate.getHours()+ currentdate.getMinutes() + currentdate.getSeconds();
+	
+	console.log('current time:'+time );
+	// 早 040000~115959
+	// 中 120000~195959
+	// 晚 200000~035959
+	if (parseInt(time) >= 40000 && parseInt(time) < 120000) {
+		//早
+		launchType = 'morning';
+	}else if (parseInt(time) >= 120000 && parseInt(time) < 200000) {
+		//中
+		launchType = 'noon';
+	}else{
+		//晚
+		launchType = 'night';
+	}
+
+	console.log('launchType:'+launchType );
 	  
  	$rootScope.pics = [];
 	$ionicLoading.show({
       template: '連線中...',
-      duration: 10000
+      duration: 3000
     }).then(function(){
-	  database.ref('/首頁/'+launchType)
-	  .once('value')
-	  .then(function(snapshot){
-	    console.log('snapshot:'+snapshot.val());
-
-	    
-
-	    snapshot.forEach(function(data){
-	    	$scope.pics.push(data.val());
-	    //   pathReference = storage.ref('/launch/'+data.val());
-	    //   pathReference.getDownloadURL().then(function(url) {
-	          // $scope.pics.push(url);
-	    //   }).catch(function(error) {
-	    //       // If anything goes wrong while getting the download URL, log the error
-	    //       console.error('error:'+error);
-	    //   });
-	    });
-	    $ionicLoading.hide();
-	  });
+		database.ref('/首頁/'+launchType).once('value').then(function(snapshot){
+		    // console.log('snapshot:'+snapshot.val());
+		    snapshot.forEach(function(data){	      	
+	          	$scope.pics.push(data.val());
+		    });
+		    $ionicLoading.hide();
+		});
 	});
+
+	// $scope.$on('$ionicView.afterEnter', function () {
+ //  		$state.go($state.current);
+	// });
 })
 
 
@@ -55,43 +65,59 @@ angular.module('app.controllers', [])
       template: '讀取中...',
       duration: 10000
     }).then(function(){
-        firebase.database().ref('/主題路線').once('value').then(function(snapshot) {
-			snapshot.forEach(function(data){
-				var sceneList = [];
-		
-				data.child('list').forEach(function(sceneData){
-					var id = sceneData.child('id').val(),
-						title = sceneData.child('title').val(),
-						photo = sceneData.child('photo').val(),
-						pathReference = storage.ref('/景點基準檔/'+photo);
-					
-				    // pathReference.getDownloadURL().then(function(url) {
-				        // console.log('photo url:'+url);
-				        var scene = {
-							id:id,
-							title:title,
-							photo:photo,
-							// url:url
-						}
-						console.log('object:'+JSON.stringify(scene));
-						sceneList.push(scene);
-				    // }).catch(function(error) {
-				    //     // If anything goes wrong while getting the download URL, log the error
-				    //     console.error('error:'+error);
-				    // });
-				});
+        firebase.database().ref('/主題路線')
+        .once('value')
+        .then(function(snapshot) {
 
-				var category = {
-					subject:data.child('subject').val(),
-					list:sceneList
-				}
-				
-		  		$scope.itemList.push(category);
+
+        	var categoryList = [];
+
+			snapshot.forEach(function(categoryData){
+				// console.log(JSON.stringify(categoryData.val()) );
+				var sceneList = [];
+
+				categoryData.child('list').forEach(function(sceneData){
+			
+					var theScene = {
+						id:sceneData.child('id').val(),
+						title:sceneData.child('title').val(),
+						photo:sceneData.child('photo').val()
+					}
+					// console.log('theScene:'+JSON.stringify(theScene));
+					sceneList.push(theScene);
+				 	
+				});
+				var theCategory = {
+						title:categoryData.child('subject').val(),
+						list:sceneList
+					}
+				categoryList.push(theCategory);
+
+		  		$scope.categoryList = categoryList;
+
+
 			});
 			$ionicLoading.hide();
 		});       
     });
 
+
+  //   $scope.fetchPhoto = function(photo_file_name){
+  //   	console.log('photo_file_name:'+photo_file_name);
+		// // var url = return storage.ref('/景點基準檔/'+photo_file_name).getDownloadURL().then(function(url) {
+		// // 	      console.log("la url ", url)  ;
+		// // 	      return url;
+		// // 	    });
+
+		// $scope.url = refspaedtServ.once("value").then(function(snapshot) {
+		//     return snapshot.val().fotoUrl;
+		//  });
+
+		// console.log('url:'+url.val());
+  //   }
+ //  	$scope.$on('$ionicView.afterEnter', function () {
+ //  		$state.go($state.current, {}, {reload: true});
+	// });
 })
    
 //旅遊資訊   
@@ -153,7 +179,7 @@ angular.module('app.controllers', [])
        .then(function(snapshot) {
 		// console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 			snapshot.forEach(function(data){
-				console.log('data:'+JSON.stringify(data.val()));
+				// console.log('data:'+JSON.stringify(data.val()));
 		  		$scope.itemList.push(data.val());
 			});
 			$ionicLoading.hide();
@@ -241,7 +267,7 @@ angular.module('app.controllers', [])
        firebase.database().ref('/景點基準檔/'+$stateParams.sceneid)
        .once('value')
        .then(function(snapshot) {
-		console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
+			console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 
 	  		$scope.title = snapshot.child('title').val();
 

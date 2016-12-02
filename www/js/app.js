@@ -14,6 +14,12 @@ angular.module('app', ['ionic', 'ionicLazyLoad', 'app.controllers', 'app.routes'
   $ionicConfigProvider.views.swipeBackEnabled(false);
 })
 
+.filter('trustAsResourceUrl', ['$sce', function($sce) {
+    return function(val) {
+        return $sce.trustAsResourceUrl(val);
+    };
+}])
+
 .run(function($ionicPlatform, $rootScope, $ionicPopup, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
