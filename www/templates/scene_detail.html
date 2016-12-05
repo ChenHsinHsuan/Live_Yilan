@@ -3,6 +3,16 @@
       <ion-slide-page ng-repeat="item in itemList">
       	<ion-content style="padding: 14px;" lazy-scroll>
 			<div ng-bind-html="item.title"></div>
+
+
+			<ion-audio-track track="track">
+	            <ion-audio-controls>
+                    <a class="button button-icon icon" ion-audio-play></a>
+                    <ion-spinner icon="ios"></ion-spinner>
+	        	</ion-audio-controls>
+	      	</ion-audio-track>
+
+
 			<div ng-bind-html="item.content"></div>
 			<img ng-repeat="photo in item.photo" image-lazy-src="{{photo}}" image-lazy-loader="lines" style="width: 100%">
 
