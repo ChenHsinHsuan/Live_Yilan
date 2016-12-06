@@ -1,13 +1,24 @@
-<ion-view title="旅遊資訊">
+<ion-view title="旅遊資訊" class="info">
 	<ion-slides options="options" slider="" style="width:100%;height:94vh;" class="has-header">
       <ion-slide-page ng-repeat="item in itemList">
-      	<ion-content style="padding: 14px;">
-			<div ng-bind-html="item.title"></div>
-			<div ng-bind-html="item.title_en"></div>
+      	<ion-content>
+      		<div class="title-block">
+				<div class="main-title">
+					<img class="rectangle-path" src="img/rectangle-path.png"/>
+					<h1 ng-bind-html="item.title"></h1>
+					<img class="rectangle-path" src="img/rectangle-path.png"/>
+				</div>
+				<div class="sub-title">
+					<h3 ng-bind-html="item.title_en"></h3>
+				</div>
+			</div>
+			
 			<img ng-src="{{item.photo}}"/>
-			<div ng-bind-html="item.content"></div>
-			<div ng-bind-html="item.content_en"></div>
-
+			<img class="float-block" ng-src="img/{{icons[$index]}}"/>
+			<div class="content-block" padding="true">
+				<div ng-bind-html="item.content"></div>
+				<div ng-bind-html="item.content_en"></div>
+			</div>
 			<a ng-show ='item.youtube_link' href="#" ng-click="window.open('{{item.youtube_link}}', '_system');">
 				測試連結youtube for 360VR
 			</a>

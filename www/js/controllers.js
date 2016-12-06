@@ -140,7 +140,7 @@ angular.module('app.controllers', [])
 		});
     });
 
-
+    $scope.icons = ['ClimateAndTemperature.png', "LocalSpecialties.png" , "TravelFun.png", 'DisinctiveB&B.png', "PopulationAndTopography.png"];
 })
    
 //宜蘭特色   

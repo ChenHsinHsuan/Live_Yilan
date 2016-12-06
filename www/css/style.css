@@ -54,3 +54,41 @@
     left: 28%;
     z-index: 9999;
 }
+
+
+
+
+.info .title-block {
+	background-color: #DDD9D0;
+	text-align: center;
+	/*height: 30vw;*/
+	padding: 3%;
+}
+
+
+.info .title-block .main-title h1{
+	display: inline-block;
+}
+
+.info .title-block .main-title .rectangle-path{
+	display: inline-block;
+    width: 20%;
+}
+
+.info .title-block .sub-title h3 {
+	font-weight: 200;
+}
+
+.info .content-block {
+	padding: 3% 5%;
+	background-color: #FFFFFF;
+}
+
+
+.info .float-block {
+	position: absolute;
+    right: 3vw;
+    top: 86vw;
+    width: 15vw;
+    height: auto;
+}
