@@ -40,3 +40,17 @@
 	width:100%;
 
 }
+
+
+
+.launch .enter-button {
+	background-image: url(../img/enter_button.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50vw;
+    height: 50vw;
+    position: absolute;
+    top: 40%;
+    left: 28%;
+    z-index: 9999;
+}

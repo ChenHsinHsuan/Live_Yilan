@@ -285,6 +285,11 @@ angular.module('app.controllers', [])
 	    url: 'https://firebasestorage.googleapis.com/v0/b/yilan-27f3a.appspot.com/o/%E4%B8%AD%E6%96%87%E8%AA%9E%E9%9F%B3%E5%B0%8E%E8%A6%BD%2Fdongshan005%E5%B9%B8%E7%A6%8F%E6%9F%9A%E5%AD%90%E6%9D%91%E6%B0%91%E5%AE%BF.wav?alt=media&token=12e7b98e-6c7f-48b9-9fa0-dc9f2b56daa7'
 	}
 
+
+	$scope.$on('$ionicView.beforeLeave', function() {
+		console.log('123');
+        MediaManager.stop();
+    });
  
 })
  
