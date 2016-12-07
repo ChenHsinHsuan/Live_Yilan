@@ -1,15 +1,19 @@
-<ion-view title="宜蘭特色">
+<ion-view title="宜蘭特色" class="feature">
 <ion-slides options="options" slider="" style="width:100%;height:94vh;" class="has-header" lazy-scroll>
       <ion-slide-page ng-repeat="item in itemList">
-      	<ion-content style="padding: 14px;" lazy-scroll>
-			<div ng-bind-html="item.title"></div>
-			<div ng-bind-html="item.title_en"></div>
-			<img image-lazy-src="{{item.feature_photo}}" image-lazy-loader="lines">
-			<div ng-bind-html="item.content"></div>
-			<div ng-bind-html="item.content_en"></div>
-			<!-- <img ng-repeat="photo in item.photo" ng-src="{{photo}}"> -->
-			<img ng-repeat="photo in item.photo" image-lazy-src="{{photo}}" image-lazy-loader="lines">
-		</ion-content>
+        <ion-content lazy-scroll>
+          <div class="title-block">
+            <img ng-src="img/{{banners[$index]}}">
+          </div>
+
+          <div class="content-block">
+            <div ng-bind-html="item.content"></div>
+            <div ng-bind-html="item.content_en"></div>
+          </div>
+          <!-- <img ng-repeat="photo in item.photo" ng-src="{{photo}}"> -->
+          <img image-lazy-src="{{item.feature_photo}}" image-lazy-loader="lines">
+          <img ng-repeat="photo in item.photo" image-lazy-src="{{photo}}" image-lazy-loader="lines">
+		    </ion-content>
       </ion-slide-page>
     </ion-slides>
 </ion-view>

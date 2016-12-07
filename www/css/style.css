@@ -1,17 +1,12 @@
 /* Empty. Add your own CSS if you like */
 
 
-.blue{
-	background-color: #2196F3;
+body{
+  font-size: 16px;
+  line-height: 28px;
 }
 
-.yellow{
-	background-color: #FFEE58;
-}
 
-.pink{
-	background-color: #E91E63;
-}
 
 .wide-as-needed {
   overflow: scroll;
@@ -33,9 +28,9 @@
 
 
 #subject  .card .image , #scene .card .image {
-	margin: 0; 
-	line-height: 120px; 
-	background-color: rgb(232, 235, 239); 
+	margin: 0;
+	line-height: 120px;
+	background-color: rgb(232, 235, 239);
 	text-align: center;
 	width:100%;
 
@@ -58,11 +53,8 @@
 
 
 
-.info .title-block {
-	background-color: #DDD9D0;
-	text-align: center;
-	/*height: 30vw;*/
-	padding: 3%;
+.info .title-block img{
+  width: 100vw;
 }
 
 
@@ -91,4 +83,21 @@
     top: 86vw;
     width: 15vw;
     height: auto;
+}
+
+
+.feature .title-block img {
+  width: 100vw;
+
+}
+
+.feature .content-block {
+  padding: 3% 5%;
+  background-color: #FFFFFF;
+}
+
+
+.story .content-block {
+  padding: 3% 5%;
+  background-color: #FFFFFF;
 }

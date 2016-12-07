@@ -2,15 +2,28 @@
   <ion-slides options="options" slider="" style="width:100%;height:94vh;" class="has-header" lazy-scroll>
       <ion-slide-page ng-repeat="item in itemList">
       	<ion-content style="padding: 14px;" lazy-scroll>
-			<div ng-bind-html="item.title"></div>
+			<div class="title-block">
+        <h1 ng-bind-html="item.title"></h1>
+      </div>
+      <div class="audio-block" ng-show="$index === 0">
+        <ion-audio-track track="audio">
+          <ion-audio-controls>
+            <a class="button button-icon icon" ion-audio-play>中</a>
+            <ion-spinner icon="ios"></ion-spinner>
+          </ion-audio-controls>
+        </ion-audio-track>
+
+        <ion-audio-track track="audio_en">
+          <ion-audio-controls>
+            <a class="button button-icon icon" ion-audio-play>En</a>
+            <ion-spinner icon="ios"></ion-spinner>
+          </ion-audio-controls>
+        </ion-audio-track>
+      </div>
 
 
-			<ion-audio-track track="track">
-	            <ion-audio-controls>
-                    <a class="button button-icon icon" ion-audio-play></a>
-                    <ion-spinner icon="ios"></ion-spinner>
-	        	</ion-audio-controls>
-	      	</ion-audio-track>
+
+
 
 
 			<div ng-bind-html="item.content"></div>

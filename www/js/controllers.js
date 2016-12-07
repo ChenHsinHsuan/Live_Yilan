@@ -3,10 +3,10 @@ var database = firebase.database(),
 	storage = firebase.storage();
 
 angular.module('app.controllers', [])
- 
-//launch 頁面   
+
+//launch 頁面
 .controller('launchCtrl', function ($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, $ionicLoading, $state) {
-	
+
 	$scope.options = {
 	  loop: true,
 	  speed: 1000,
@@ -19,7 +19,7 @@ angular.module('app.controllers', [])
 	    pathReference = '',
 	    currentdate = new Date(),
 		time = ''+currentdate.getHours()+ currentdate.getMinutes() + currentdate.getSeconds();
-	
+
 	console.log('current time:'+time );
 	// 早 040000~115959
 	// 中 120000~195959
@@ -36,7 +36,7 @@ angular.module('app.controllers', [])
 	}
 
 	console.log('launchType:'+launchType );
-	  
+
  	$rootScope.pics = [];
 	$ionicLoading.show({
       template: '連線中...',
@@ -44,7 +44,7 @@ angular.module('app.controllers', [])
     }).then(function(){
 		database.ref('/首頁/'+launchType).once('value').then(function(snapshot){
 		    // console.log('snapshot:'+snapshot.val());
-		    snapshot.forEach(function(data){	      	
+		    snapshot.forEach(function(data){
 	          	$scope.pics.push(data.val());
 		    });
 		    $ionicLoading.hide();
@@ -57,7 +57,7 @@ angular.module('app.controllers', [])
 })
 
 
-//主題路線  
+//主題路線
 .controller('subjectCtrl',function ($rootScope, $scope, $stateParams, $ionicScrollDelegate, $ionicPopup, $ionicLoading, $state) {
 	$scope.itemList = [];
 
@@ -77,7 +77,7 @@ angular.module('app.controllers', [])
 				var sceneList = [];
 
 				categoryData.child('list').forEach(function(sceneData){
-			
+
 					var theScene = {
 						id:sceneData.child('id').val(),
 						title:sceneData.child('title').val(),
@@ -85,7 +85,7 @@ angular.module('app.controllers', [])
 					}
 					// console.log('theScene:'+JSON.stringify(theScene));
 					sceneList.push(theScene);
-				 	
+
 				});
 				var theCategory = {
 						title:categoryData.child('subject').val(),
@@ -98,7 +98,7 @@ angular.module('app.controllers', [])
 
 			});
 			$ionicLoading.hide();
-		});       
+		});
     });
 
 
@@ -119,11 +119,11 @@ angular.module('app.controllers', [])
  //  		$state.go($state.current, {}, {reload: true});
 	// });
 })
-   
-//旅遊資訊   
+
+//旅遊資訊
 .controller('infoCtrl', function ($scope, $stateParams, $ionicLoading) {
 	$scope.itemList = [];
-	
+
 	$ionicLoading.show({
       template: '讀取中...',
       duration: 3000
@@ -140,10 +140,10 @@ angular.module('app.controllers', [])
 		});
     });
 
-    $scope.icons = ['ClimateAndTemperature.png', "LocalSpecialties.png" , "TravelFun.png", 'DisinctiveB&B.png', "PopulationAndTopography.png"];
+    $scope.banners = ['ClimateAndTemperature.png', "LocalSpecialties.png" , "TravelFun.png", 'DisinctiveB&B.png', "PopulationAndTopography.png"];
 })
-   
-//宜蘭特色   
+
+//宜蘭特色
 .controller('featureCtrl', function ($scope, $stateParams, $ionicLoading) {
 
 	$scope.itemList = [];
@@ -164,8 +164,9 @@ angular.module('app.controllers', [])
 		});
     });
 
+	$scope.banners = ['play.png', 'tasty.png', 'relax.png', 'heaven.png', 'nice.png'];
 })
-      
+
 //在地故事
 .controller('storyCtrl', function ($scope, $stateParams, $ionicLoading) {
 	$scope.itemList = [];
@@ -188,8 +189,8 @@ angular.module('app.controllers', [])
 
 
 })
- 
-//景點類型 
+
+//景點類型
 .controller('sceneCtrl', function ($scope, $stateParams, $ionicScrollDelegate, $ionicPopup, $ionicLoading) {
 	$scope.itemList = [];
 
@@ -206,15 +207,15 @@ angular.module('app.controllers', [])
 				// console.log('data:'+JSON.stringify(data.val()));
 				// console.log(JSON.stringify(data.child('list').val()));
 				var sceneList = [];
-				
+
 				data.child('list').forEach(function(sceneData){
 					var id = sceneData.child('id').val(),
 						title = sceneData.child('title').val(),
 						photo = sceneData.child('photo').val(),
 						pathReference = storage.ref('/景點基準檔/'+photo);
-				    
+
 				    // pathReference.getDownloadURL().then(function(url) {
-				        
+
 				        var scene = {
 							id:id,
 							title:title,
@@ -233,25 +234,25 @@ angular.module('app.controllers', [])
 					subject:data.child('subject').val(),
 					list:sceneList
 				}
-				
+
 		  		$scope.itemList.push(category);
 			});
 			$ionicLoading.hide();
 		});
 
-       
+
     });
 
 })
- 
-//意見反饋   
+
+//意見反饋
 .controller('feedbackCtrl',function ($scope, $stateParams) {
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     	viewData.enableBack = true;
 	});
 })
- 
-//景點內容   
+
+//景點內容
 .controller('scene_detailCtrl',function ($scope, $stateParams, $ionicLoading) {
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
@@ -267,33 +268,34 @@ angular.module('app.controllers', [])
        firebase.database().ref('/景點基準檔/'+$stateParams.sceneid)
        .once('value')
        .then(function(snapshot) {
-			console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
+			      // console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 
-	  		$scope.title = snapshot.child('title').val();
+            $scope.title = snapshot.child('title').val();
+            $scope.audio = {
+               url: snapshot.child('audio').val()
+            }
 
-			snapshot.child('data').forEach(function(data){
-				// console.log('data:'+JSON.stringify(data.val()));
-		  		$scope.itemList.push(data.val());
-			});
-			$ionicLoading.hide();
-		});
+             $scope.audio_en = {
+               url: snapshot.child('audio_en').val()
+             }
+
+
+            snapshot.child('data').forEach(function(data){
+              console.log('data:'+JSON.stringify(data.val()));
+                $scope.itemList.push(data.val());
+            });
+            $ionicLoading.hide();
+        });
     });
-
-
-
-    $scope.track = {
-	    url: 'https://firebasestorage.googleapis.com/v0/b/yilan-27f3a.appspot.com/o/%E4%B8%AD%E6%96%87%E8%AA%9E%E9%9F%B3%E5%B0%8E%E8%A6%BD%2Fdongshan005%E5%B9%B8%E7%A6%8F%E6%9F%9A%E5%AD%90%E6%9D%91%E6%B0%91%E5%AE%BF.wav?alt=media&token=12e7b98e-6c7f-48b9-9fa0-dc9f2b56daa7'
-	}
-
 
 	$scope.$on('$ionicView.beforeLeave', function() {
 		console.log('123');
         MediaManager.stop();
     });
- 
-})
- 
 
-//選單      
+})
+
+
+//選單
 // .controller('menuCtrl', function ($scope, $stateParams) {
-// }) 
+// })
