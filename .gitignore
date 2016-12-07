@@ -4,3 +4,10 @@
 node_modules/
 platforms/
 plugins/
+.idea/compiler.xml
+.idea/Live_Yilan.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/copyright/profiles_settings.xml
