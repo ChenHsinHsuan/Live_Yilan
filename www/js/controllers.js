@@ -89,6 +89,7 @@ angular.module('app.controllers', [])
 				});
 				var theCategory = {
 						title:categoryData.child('subject').val(),
+						title_en:categoryData.child('subject_en').val(),
 						list:sceneList
 					}
 				categoryList.push(theCategory);
@@ -271,6 +272,7 @@ angular.module('app.controllers', [])
 			      // console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 
             $scope.title = snapshot.child('title').val();
+            $scope.title_en = snapshot.child('title_en').val();
             $scope.audio = {
                url: snapshot.child('audio').val()
             }
@@ -289,10 +291,11 @@ angular.module('app.controllers', [])
     });
 
 	$scope.$on('$ionicView.beforeLeave', function() {
-		console.log('123');
         MediaManager.stop();
     });
 
+
+	$scope.banners = ["attractions.png", "service_item.png", "traffic.png"]
 })
 
 

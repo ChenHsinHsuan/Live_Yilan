@@ -1,23 +1,25 @@
-<ion-view title="主題路線" id="subject">
+<ion-view title="主題路線" class="subject">
   <ion-content padding="true" class="has-header" scrollbar-y="false" lazy-scroll>
     <div ng-repeat="category in categoryList">
-      <div class="h3" style="margin: 16px;">{{category.title}}</div>
+      <div class="title-block">
+        <div class="main-title">
+          {{category.title}}
+          <img class="title-bar" src="img/bar.png"/>
+          <img class="title-oval" src="img/oval.png"/>
+        </div>
+        <div class="sub-title">{{category.title_en}}</div>
+      </div>
       <ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed" lazy-scroll>
-        <a class="button button-clear"
+        <a class="button button-clear scene-button"
             ng-repeat="scene in category.list" 
-            ng-click="doDetail('{{scene.id}}')"            
-            style="min-width: 144px; max-width:144px;">
+            ng-click="doDetail('{{scene.id}}')">
             <div class="list">
               <div class="item item-image">
-              <!-- {{scene.url}} -->
                 <img image-lazy-src="{{scene.photo}}" image-lazy-loader="lines">
               </div>
-              <small class="item" style="border-width:0px; line-height: 1.5em; padding:0px; margin-top: 10px;" ng-bind-html="scene.title">
-              
-              </small>
+              <small class="item scene-title" ng-bind-html="scene.title"></small>
             </div>
         </a>
-
       </ion-scroll>
     </div>
   </ion-content>
