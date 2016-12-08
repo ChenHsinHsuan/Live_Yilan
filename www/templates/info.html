@@ -18,10 +18,8 @@
             <div ng-bind-html="item.content"></div>
             <div ng-bind-html="item.content_en"></div>
           </div>
-          <a ng-show ='item.youtube_link' href="#" ng-click="window.open('{{item.youtube_link}}', '_system');">
-            測試連結youtube for 360VR
-          </a>
-          <!-- <iframe ng-show ='item.youtube_link != "#" ' ng-src="{{item.youtube_link | trustAsResourceUrl }}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen onclick="window.open('{{item.youtube_link}}', '_system', 'location=yes'); return false;"></iframe> -->
+         
+          <iframe ng-show ='item.youtube_link != "#" ' ng-src="{{item.youtube_link | trustAsResourceUrl }}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen onclick="window.open('{{item.youtube_link}}', '_system', 'location=yes'); return false;"></iframe>
         </ion-content>
       </ion-slide-page>
     </ion-slides>
