@@ -20,7 +20,7 @@ angular.module('app', ['ionic', 'ionicLazyLoad', 'ionic-audio','app.controllers'
     };
 }])
 
-.run(function($ionicPlatform, $rootScope, $ionicPopup, $state) {
+.run(function($ionicPlatform, $rootScope, $ionicPopup, $state, $ionicModal) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -41,10 +41,23 @@ angular.module('app', ['ionic', 'ionicLazyLoad', 'ionic-audio','app.controllers'
   };
 
   $rootScope.doFeetback = function(){
-    $ionicPopup.alert({
-         title: '施工中',
-         template: '等待問卷填寫完成...'
-    });
+    // $ionicPopup.alert({
+    //      title: '意見反饋',
+    //      template: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWfE1pLdw-hZ9iHxy_Kpi_oT7bT-E5BSZNoM-RCC99XJIJIQ/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>',
+    //      okText: '取消'
+    // });
+
+      $ionicModal.fromTemplateUrl('my-modal.html', {
+        scope: $rootScope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $rootScope.modal = modal;
+        $rootScope.modal.show();
+      });    
+  }
+
+  $rootScope.doModalRemove = function() {
+    $rootScope.modal.remove();
   }
 
 })

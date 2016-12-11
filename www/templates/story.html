@@ -3,9 +3,8 @@
       <ion-slide-page ng-repeat="item in itemList">
       	<ion-content lazy-scroll>
 			<div class="title-block">
-        <img image-lazy-src="{{item.photo}}" image-lazy-loader="lines">
+        <img ng-src="{{item.photo}}">
       </div>
-
 			<div class="content-block" ng-bind-html="item.content"></div>
 		</ion-content>
       </ion-slide-page>

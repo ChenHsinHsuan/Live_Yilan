@@ -26,34 +26,35 @@ angular.module('app.controllers', [])
 	// 晚 200000~035959
 	if (parseInt(time) >= 40000 && parseInt(time) < 120000) {
 		//早
-		launchType = 'morning';
+		// launchType = 'morning';
+		$scope.pics = ['1.jpg', '2.jpg', '3.jpg'];
 	}else if (parseInt(time) >= 120000 && parseInt(time) < 200000) {
 		//中
-		launchType = 'noon';
+		// launchType = 'noon';
+		$scope.pics = ['4.jpg', '5.jpg', '6.jpg'];
 	}else{
 		//晚
-		launchType = 'night';
+		// launchType = 'night';
+		$scope.pics = ['7.jpg', '8.jpg', '9.jpg'];
 	}
 
 	console.log('launchType:'+launchType );
 
- 	$rootScope.pics = [];
-	$ionicLoading.show({
-      template: '連線中...',
-      duration: 3000
-    }).then(function(){
-		database.ref('/首頁/'+launchType).once('value').then(function(snapshot){
-		    // console.log('snapshot:'+snapshot.val());
-		    snapshot.forEach(function(data){
-	          	$scope.pics.push(data.val());
-		    });
-		    $ionicLoading.hide();
-		});
-	});
-
-	// $scope.$on('$ionicView.afterEnter', function () {
- //  		$state.go($state.current);
+ // 	$scope.pics = [];
+	// $ionicLoading.show({
+ //      template: '連線中...',
+ //      duration: 3000
+ //    }).then(function(){
+	// 	database.ref('/首頁/'+launchType).once('value').then(function(snapshot){
+	// 	    // console.log('snapshot:'+snapshot.val());
+	// 	    snapshot.forEach(function(data){
+	//           	$scope.pics.push(data.val());
+	// 	    });
+	// 	    $ionicLoading.hide();
+	// 	});
 	// });
+
+	
 })
 
 
@@ -81,6 +82,7 @@ angular.module('app.controllers', [])
 					var theScene = {
 						id:sceneData.child('id').val(),
 						title:sceneData.child('title').val(),
+						title_en:sceneData.child('title_en').val(),
 						photo:sceneData.child('photo').val()
 					}
 					// console.log('theScene:'+JSON.stringify(theScene));
@@ -141,7 +143,7 @@ angular.module('app.controllers', [])
 		});
     });
 
-    $scope.banners = ['ClimateAndTemperature.png', "LocalSpecialties.png" , "TravelFun.png", 'DisinctiveB&B.png', "PopulationAndTopography.png"];
+    $scope.banners = ['ClimateAndTemperature.png', "PopulationAndTopography.png", "LocalSpecialties.png", "TravelFun.png", 'DisinctiveB&B.png', 'vr.png' ];
 })
 
 //宜蘭特色
@@ -212,6 +214,7 @@ angular.module('app.controllers', [])
 				data.child('list').forEach(function(sceneData){
 					var id = sceneData.child('id').val(),
 						title = sceneData.child('title').val(),
+						title_en = sceneData.child('title_en').val(),
 						photo = sceneData.child('photo').val(),
 						pathReference = storage.ref('/景點基準檔/'+photo);
 
@@ -220,6 +223,7 @@ angular.module('app.controllers', [])
 				        var scene = {
 							id:id,
 							title:title,
+							title_en:title_en,
 							photo:photo,
 							// url:url
 						}
@@ -233,6 +237,7 @@ angular.module('app.controllers', [])
 
 				var category = {
 					subject:data.child('subject').val(),
+					subject_en:data.child('subject_en').val(),
 					list:sceneList
 				}
 

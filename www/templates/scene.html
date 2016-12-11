@@ -9,19 +9,19 @@
             <img class="title-oval" src="img/oval.png"/>
           </div>
         </div>
-        <div class="sub-title">{{item.title_en}}</div>
+        <div class="sub-title">{{item.subject_en}}</div>
       </div>
       <ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed" lazy-scroll>
         <a class="button button-clear"  
             ng-repeat="scene in item.list" 
             ng-click="doDetail('{{scene.id}}')"
-            style="min-width: 144px; max-width:144px;">
+            style="min-width: 55vw; max-width:55vw;">
             <div class="list">
               <div class="item item-image">
                 <img image-lazy-src="{{scene.photo}}" image-lazy-loader="lines">
               </div>
-
               <small class="item scene-title" ng-bind-html="scene.title"></small>
+              <small class="item scene-title en" ng-bind-html="scene.title_en"></small>
             </div>
         </a>
       </ion-scroll>
