@@ -20,7 +20,7 @@ angular.module('app.controllers', [])
 	    currentdate = new Date(),
 		time = ''+currentdate.getHours()+ currentdate.getMinutes() + currentdate.getSeconds();
 
-	console.log('current time:'+time );
+	// console.log('current time:'+time );
 	// 早 040000~115959
 	// 中 120000~195959
 	// 晚 200000~035959
@@ -38,7 +38,7 @@ angular.module('app.controllers', [])
 		$scope.pics = ['7.jpg', '8.jpg', '9.jpg'];
 	}
 
-	console.log('launchType:'+launchType );
+	// console.log('launchType:'+launchType );
 
  // 	$scope.pics = [];
 	// $ionicLoading.show({
@@ -136,7 +136,7 @@ angular.module('app.controllers', [])
        .then(function(snapshot) {
 		// console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 			snapshot.forEach(function(data){
-				console.log('data:'+JSON.stringify(data.val()));
+				// console.log('data:'+JSON.stringify(data.val()));
 		  		$scope.itemList.push(data.val());
 			});
 			$ionicLoading.hide();
@@ -160,7 +160,7 @@ angular.module('app.controllers', [])
        .then(function(snapshot) {
 		// console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 			snapshot.forEach(function(data){
-				console.log('data:'+JSON.stringify(data.val()));
+				// console.log('data:'+JSON.stringify(data.val()));
 		  		$scope.itemList.push(data.val());
 			});
 			$ionicLoading.hide();
@@ -205,7 +205,7 @@ angular.module('app.controllers', [])
        firebase.database().ref('/景點類型/')
        .once('value')
        .then(function(snapshot) {
-		console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
+		// console.log('snapshot.val():'+JSON.stringify(snapshot.val()));
 			snapshot.forEach(function(data){
 				// console.log('data:'+JSON.stringify(data.val()));
 				// console.log(JSON.stringify(data.child('list').val()));
@@ -266,7 +266,7 @@ angular.module('app.controllers', [])
 	});
 
 	$scope.itemList = [];
-	console.log('$stateParams.sceneid:'+$stateParams.sceneid);
+	// console.log('$stateParams.sceneid:'+$stateParams.sceneid);
  	$ionicLoading.show({
 	      template: '讀取中...',
 	      duration: 3000
@@ -288,7 +288,7 @@ angular.module('app.controllers', [])
 
 
             snapshot.child('data').forEach(function(data){
-              console.log('data:'+JSON.stringify(data.val()));
+              // console.log('data:'+JSON.stringify(data.val()));
                 $scope.itemList.push(data.val());
             });
             $ionicLoading.hide();
